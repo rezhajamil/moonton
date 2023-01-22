@@ -7,7 +7,7 @@ export default function SubscriptionCard({
     durationInMonth,
     features,
     isPremium,
-    onSelectedSubscription,
+    onSelectSubscription,
 }) {
     return (
         <>
@@ -45,7 +45,7 @@ export default function SubscriptionCard({
                         <PrimaryButton
                             type="button"
                             variant="white-outline"
-                            onClick={onSelectedSubscription}
+                            onClick={onSelectSubscription}
                         >
                             <span className="text-base">Start {name}</span>
                         </PrimaryButton>
@@ -112,7 +112,7 @@ export default function SubscriptionCard({
                     <div>
                         <PrimaryButton
                             type="button"
-                            onClick={onSelectedSubscription}
+                            onClick={onSelectSubscription}
                         >
                             <span className="text-base font-semibold">
                                 Subscribe Now
