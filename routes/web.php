@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\MovieController;
@@ -38,6 +39,10 @@ Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashbo
     Route::get('subscription-plan', [SubscriptionPlanController::class,'index'])->name('subscriptionPlan.index')->middleware('checkUserSubscription:false');
 
     Route::post('subscription-plan/{subscriptionPlan}/user-subscriobe', [SubscriptionPlanController::class,'userSubscribe'])->name('subscriptionPlan.userSubscribe')->middleware('checkUserSubscription:false');
+});
+
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.dashboard.')->group(function(){
+    Route::resource('movie',AdminMovieController::class);
 });
 
 Route::prefix('prototype')->name('prototype.')->group(function () {
