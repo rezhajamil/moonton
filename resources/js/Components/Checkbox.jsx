@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export default function Checkbox({ name, value, handleChange }) {
+export default function Checkbox({ name, value, handleChange, checked }) {
     return (
         <input
             type="checkbox"
@@ -8,6 +8,7 @@ export default function Checkbox({ name, value, handleChange }) {
             value={value}
             className="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
             onChange={(e) => handleChange(e)}
+            defaultChecked={checked}
         />
     );
 }

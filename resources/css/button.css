@@ -1,19 +1,23 @@
-.btn-primary{
+.btn-primary {
     @apply text-white bg-alerange;
 }
 
-.btn-warning{
+.btn-warning {
     @apply text-white bg-yellow-500;
 }
 
-.btn-danger{
+.btn-danger {
     @apply text-white bg-red-500;
 }
 
-.btn-light-outline{
-    @apply text-white border border-white
+.btn-slate {
+    @apply text-white bg-slate-500;
 }
 
-.btn-white-outline{
-    @apply text-black border border-[#F1F1F1]
+.btn-light-outline {
+    @apply text-white border border-white;
+}
+
+.btn-white-outline {
+    @apply text-black border border-[#F1F1F1];
 }
