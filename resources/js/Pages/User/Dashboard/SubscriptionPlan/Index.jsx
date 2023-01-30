@@ -1,19 +1,49 @@
 import SubscriptionCard from "@/Components/SubscriptionCard";
 import Authenticated from "@/Layouts/Authenticated/Index";
 import { Inertia } from "@inertiajs/inertia";
+import { Head } from "@inertiajs/inertia-react";
 
-export default function SubscriptionPlan({ auth, subscriptionPlans }) {
+export default function SubscriptionPlan({ auth, subscriptionPlans, env }) {
     const selectSubscription = (id) => {
         // alert(id);
         Inertia.post(
             route("user.dashboard.subscriptionPlan.userSubscribe", {
                 subscriptionPlan: id,
-            })
+            }),
+            {},
+            {
+                only: ["userSubscription"],
+                onSuccess: (props) => {
+                    onSnapMidtrans(props.props.userSubscription);
+                },
+            }
         );
+    };
+
+    const onSnapMidtrans = (userSubscription) => {
+        snap.pay(userSubscription.snap_token, {
+            onSuccess: function (result) {
+                console.log(result);
+            },
+            // Optional
+            onPending: function (result) {
+                console.log(result);
+            },
+            // Optional
+            onError: function (result) {
+                console.log(result);
+            },
+        });
     };
 
     return (
         <Authenticated auth={auth}>
+            <Head title="Subscription Plan">
+                <script
+                    src="https://app.sandbox.midtrans.com/snap/snap.js"
+                    data-client-key={env.MIDTRANS_CLIENTKEY}
+                ></script>
+            </Head>
             <div className="flex flex-col items-center py-20">
                 <div className="text-black font-semibold text-[26px] mb-3">
                     Pricing for Everyone
