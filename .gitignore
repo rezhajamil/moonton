@@ -4,6 +4,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/moonton-template
 .env
 .env.backup
 .env.production
